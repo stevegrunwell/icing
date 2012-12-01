@@ -18,5 +18,3 @@ class PostHelper extends AppHelper {
      return sprintf( '<time title="%s">Posted %s</time>', date( 'r', $time ), $this->Time->timeAgoInWords( $time ) );
    }
 }
-
-?>

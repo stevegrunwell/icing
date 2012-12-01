@@ -8,5 +8,3 @@ class Post extends AppModel {
     )
   );
 }
-
-?>
