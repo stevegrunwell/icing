@@ -5,7 +5,7 @@ class PostsController extends AppController {
   public $helpers = array( 'Form', 'Html', 'Post', 'Session' );
 
   public function index() {
-    $this->set( 'posts', $this->Post->find( 'all', array( 'order' => 'created DESC' ) ) );
+    $this->set( 'posts', $this->Post->find( 'all', array( 'order' => 'Post.created DESC' ) ) );
   }
 
   public function view( $id=null ) {

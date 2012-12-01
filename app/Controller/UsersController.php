@@ -7,7 +7,10 @@ class UsersController extends AppController {
     $this->Auth->allow( 'add', 'login' );
   }
 
-  public function view( $id=null ) {
+  public function view( $id=null, $is_username=true ) {
+    if ( $is_username ) {
+      $id = $this->User->field( 'id', array( 'username' => $id ) );
+    }
     $this->User->id = $id;
     if ( ! $this->User->exists() ) {
       throw new NotFoundException( 'User does not exist' );

@@ -37,7 +37,11 @@
  */
   CakePlugin::routes();
 
+/**
+ * Application-specific routes
+ */
   Router::connect( '/', array( 'controller' => 'posts', 'action' => 'index' ) );
+  Router::connect( '/:username', array( 'controller' => 'users', 'action' => 'view' ), array( 'pass' => array( 'username', true ) ) );
 
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
