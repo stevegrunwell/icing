@@ -55,6 +55,7 @@ class UsersController extends AppController {
   public function login() {
     if ( $this->request->is( 'post' ) ) {
       if ( $this->Auth->login() ) {
+        $this->User->save( array( 'id' => $this->Auth->user( 'id' ), 'last_login' => date( 'Y-m-d H:i:s' ), 'updated' => false ), false );
         $this->redirect( $this->Auth->redirect() );
       } else {
         $this->Session->setFlash( 'Invalid credentials', 'default', array( 'class' => 'error' ) );

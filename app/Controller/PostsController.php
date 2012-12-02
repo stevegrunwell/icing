@@ -12,7 +12,6 @@ class PostsController extends AppController {
     $this->Post->id = $id;
     $this->set( 'post', $this->Post->read() );
     $this->set( 'can_delete', $this->Post->userCanEditPost( $id, $this->Auth->user( 'id' ) ) );
-    print_r( $this->Auth->user() );
   }
 
   public function add() {
