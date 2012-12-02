@@ -61,7 +61,7 @@ class User extends AppModel {
    * @return bool
    */
   public function checkAgainstReservedUsernames( $data ) {
-    $reserved = array( 'posts', 'users', 'admin' );
+    $reserved = array( 'posts', 'users', 'admin', 'login', 'logout', 'signup' );
     return ! in_array( $data['username'], $reserved );
   }
 
