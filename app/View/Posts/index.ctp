@@ -1,5 +1,6 @@
 <h1>Latest Icings</h1>
-<?php echo $this->Html->link( 'Add Icing', array( 'controller' => 'posts', 'action' => 'add' ) ); ?>
+
+<?php echo $this->Session->flash(); ?>
 
 <ul class="posts">
 <?php foreach ( $posts as $post ) : ?>

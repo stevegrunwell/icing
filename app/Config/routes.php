@@ -41,6 +41,9 @@
  * Application-specific routes
  */
   Router::connect( '/', array( 'controller' => 'posts', 'action' => 'index' ) );
+  Router::connect( '/login', array( 'controller' => 'users', 'action' => 'login' ) );
+  Router::connect( '/logout', array( 'controller' => 'users', 'action' => 'logout' ) );
+  Router::connect( '/signup', array( 'controller' => 'users', 'action' => 'add' ) );
   Router::connect( '/:username', array( 'controller' => 'users', 'action' => 'view' ), array( 'pass' => array( 'username', true ) ) );
 
 /**

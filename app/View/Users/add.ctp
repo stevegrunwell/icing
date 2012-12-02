@@ -1,6 +1,8 @@
 <div class="signup">
   <h1>Signup</h1>
 
+  <?php echo $this->Session->flash(); ?>
+
   <?php
     echo $this->Form->create( 'User' );
     echo $this->Form->input( 'username' );

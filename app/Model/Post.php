@@ -6,9 +6,15 @@ class Post extends AppModel {
 
   public $validate = array(
     'content' => array(
-      'rule' => array( 'maxLength', 140 ),
-      'required' => true,
-      'message' => 'Your icing cannot be longer than 140 characters'
+      'required' => array(
+        'rule' => 'notEmpty',
+        'required' => true,
+        'message' => 'Your icing cannot be empty'
+      ),
+      'maxLength' => array(
+        'rule' => array( 'maxLength', 140 ),
+        'message' => 'Your icing cannot be longer than 140 characters'
+      )
     )
   );
 

@@ -6,7 +6,7 @@
 
 <?php if ( $posts ) : ?>
 
-  <ul class="recent-posts">
+  <ul class="posts recent-posts">
   <?php foreach ( $posts as $post ) : ?>
 
     <?php echo $this->element( 'postListItem', array( 'post' => $post ) ); ?>

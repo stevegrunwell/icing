@@ -12,6 +12,7 @@ class PostsController extends AppController {
     $this->Post->id = $id;
     $this->set( 'post', $this->Post->read() );
     $this->set( 'can_delete', $this->Post->userCanEditPost( $id, $this->Auth->user( 'id' ) ) );
+    print_r( $this->Auth->user() );
   }
 
   public function add() {
@@ -19,10 +20,10 @@ class PostsController extends AppController {
       $this->Post->create();
       $this->request->data['Post']['user_id'] = $this->Auth->user( 'id' );
       if ( $this->Post->save( $this->request->data ) ) {
-        $this->Session->setFlash( 'Your icing has been created successfully' );
+        $this->Session->setFlash( 'Your icing has been created successfully', 'default', array( 'class' => 'success' ) );
         $this->redirect( array( 'action' => 'index' ) );
       } else {
-        $this->Session->setFlash( 'There was an error creating your icing' );
+        $this->Session->setFlash( 'There was an error creating your icing', 'default', array( 'class' => 'error' ) );
       }
     }
   }
@@ -33,7 +34,7 @@ class PostsController extends AppController {
     }
 
     if ( $this->Post->delete( $id ) ) {
-      $this->Session->setFlash( 'Your icing has been deleted' );
+      $this->Session->setFlash( 'Your icing has been deleted', 'default', array( 'class' => 'success' ) );
       $this->redirect( array( 'action' => 'index' ) );
     }
   }

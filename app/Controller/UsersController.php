@@ -2,9 +2,11 @@
 
 class UsersController extends AppController {
 
+  public $helpers = array( 'Form', 'Html', 'User', 'Session' );
+
   public function beforeFilter() {
     parent::beforeFilter();
-    $this->Auth->allow( 'add', 'login' );
+    $this->Auth->allow( 'add', 'login', 'logout' );
   }
 
   public function view( $id=null, $is_username=true ) {
@@ -23,10 +25,10 @@ class UsersController extends AppController {
     if ( $this->request->is( 'post' ) ) {
       $this->User->create();
       if ( $this->User->save( $this->request->data ) ) {
-        $this->Session->setFlash( 'Your account has been created successfully' );
+        $this->Session->setFlash( 'Your account has been created successfully', 'default', array( 'class' => 'success' ) );
         $this->redirect( array( 'action' => 'view', $this->User->id ) );
       } else {
-        $this->Session->setFlash( 'Unable to create user account' );
+        $this->Session->setFlash( 'Unable to create user account', 'default', array( 'class' => 'error' ) );
       }
     }
   }
@@ -39,10 +41,10 @@ class UsersController extends AppController {
 
     if ( $this->request->is( 'post' ) || $this->request->is( 'put' ) ) {
       if ( $this->User->save( $this->request->data ) ) {
-        $this->Session->setFlash( 'Your changes have been saved' );
+        $this->Session->setFlash( 'Your changes have been saved', 'default', array( 'class' => 'success' ) );
         $this->redirect( array( 'action' => 'view' ) );
       } else {
-        $this->Session->setFlash( 'Changes could not be saved' );
+        $this->Session->setFlash( 'Changes could not be saved', 'default', array( 'class' => 'error' ) );
       }
     } else {
       $this->request->data = $this->User->read( null, $id );
@@ -55,7 +57,7 @@ class UsersController extends AppController {
       if ( $this->Auth->login() ) {
         $this->redirect( $this->Auth->redirect() );
       } else {
-        $this->Session->setFlash( 'Invalid credentials' );
+        $this->Session->setFlash( 'Invalid credentials', 'default', array( 'class' => 'error' ) );
       }
     }
   }

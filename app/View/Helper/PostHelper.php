@@ -1,6 +1,6 @@
 <?php
 
-App::uses('AppHelper', 'View/Helper');
+App::uses( 'AppHelper', 'View/Helper' );
 
 class PostHelper extends AppHelper {
   public $helpers = array( 'Time' );
